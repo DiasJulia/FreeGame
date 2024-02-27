@@ -11,10 +11,24 @@ export class GameListComponent implements OnInit {
   constructor(private gameService: GamesService) {}
 
   public games: Game[] = [];
+  public genres = new Set<string>();
+  public platforms = new Set<string>();
+  public years: number[] = [...Array(2022 - 1970).keys()]
+    .map((i) => i + 1970)
+    .reverse();
+
+  public filterGames = '';
+  public filterGenre = '';
+  public filterPlatform = '';
+  public filterYear = '';
 
   ngOnInit() {
     this.gameService.getAllGames().subscribe((data: Game[]) => {
       this.games = data;
+      this.games.forEach((game) => {
+        this.genres.add(game.genre);
+        this.platforms.add(game.platform);
+      });
     });
   }
 }

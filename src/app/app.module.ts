@@ -6,10 +6,12 @@ import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { GameListComponent } from './pages/game-list/game-list.component';
 import { GameCardComponent } from './components/game-card/game-card.component';
+import { FormsModule } from '@angular/forms';
+import { FilterGamePipe } from './pipes/filter-game.pipe';
 
 @NgModule({
-  declarations: [AppComponent, GameListComponent, GameCardComponent],
-  imports: [BrowserModule, HttpClientModule, AppRoutingModule],
+  declarations: [AppComponent, GameListComponent, GameCardComponent, FilterGamePipe],
+  imports: [BrowserModule, HttpClientModule, AppRoutingModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

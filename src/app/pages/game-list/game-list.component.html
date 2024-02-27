@@ -1,4 +1,26 @@
 <h1>Games</h1>
+<div class="filter-box">
+  <label for="filter">Pesquisar</label>
+  <input type="text" placeholder="Pesquisar" [(ngModel)]="filterGames" />
+  <label for="filter">Categoria</label>
+  <select [(ngModel)]="filterGenre">
+    <option value="">Todos</option>
+    <option *ngFor="let genre of genres" [value]="genre">{{ genre }}</option>
+  </select>
+  <label for="filter">Plataforma</label>
+  <select [(ngModel)]="filterPlatform">
+    <option value="">Todos</option>
+    <option *ngFor="let platform of platforms" [value]="platform">
+      {{ platform }}
+    </option>
+  </select>
+  <label for="filter">Ano de Lançamento</label>
+  <select [(ngModel)]="filterYear">
+    <option value="">Todos</option>
+    <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+  </select>
+  <button (click)="filterGames = ''">Limpar</button>
+</div>
 <ul class="game-list">
   <div *ngFor="let game of games">
     <li>
