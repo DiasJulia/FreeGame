@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Game } from '../../interfaces/game';
 
 @Injectable({
   providedIn: 'root',
@@ -10,6 +11,6 @@ export class GamesService {
   constructor(private http: HttpClient) {}
 
   public getAllGames() {
-    return this.http.get(this.baseUrl + 'games');
+    return this.http.get<Game[]>(`${this.baseUrl}games`);
   }
 }
