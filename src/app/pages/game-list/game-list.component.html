@@ -21,10 +21,23 @@
   </select>
   <button (click)="filterGames = ''">Limpar</button>
 </div>
+<div>
+  <label for="filter">Ordenar por</label>
+  <select [(ngModel)]="sortCriterion">
+    <option value="title">Nome</option>
+    <option value="release_date">Ano de Lançamento</option>
+  </select>
+  <select [(ngModel)]="sortDirection">
+    <option value="asc">Crescente</option>
+    <option value="desc">Decrescente</option>
+  </select>
+</div>
 <ul class="game-list">
   <div
     *ngFor="
-      let game of games | filterGame : filterGenre : filterPlatform : filterYear
+      let game of games
+        | filterGame : filterGenre : filterPlatform : filterYear
+        | sortGame : sortCriterion : sortDirection
     "
   >
     <li>

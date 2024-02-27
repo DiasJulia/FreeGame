@@ -22,9 +22,13 @@ export class GameListComponent implements OnInit {
   public filterPlatform = '';
   public filterYear = '';
 
+  public sortCriterion = '';
+  public sortDirection = 'asc';
+
   ngOnInit() {
     this.gameService.getAllGames().subscribe((data: Game[]) => {
       this.games = data;
+      console.log(this.games);
       this.games.forEach((game) => {
         this.genres.add(game.genre);
         this.platforms.add(game.platform);
