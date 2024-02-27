@@ -1,0 +1,36 @@
+<div class="container">
+  <h1>{{ game?.title || "Detalhes do Jogo" }}</h1>
+  <div class="game-details">
+    <div class="thumbnail">
+      <img src="https://www.freetogame.com/g/2/thumbnail.jpg" alt="Thumbnail" />
+    </div>
+    <div class="info">
+      <h2>{{ game?.title || "Título do Jogo" }}</h2>
+      <p>Status: {{ game?.status || "Status do Jogo" }}</p>
+      <p class="description">
+        {{ game?.short_description || "Descrição do Jogo" }}
+      </p>
+      <p class="description-long">
+        {{ game?.description || "Descrição longa do Jogo" }}
+      </p>
+      <p>Genre: {{ game?.genre }}</p>
+      <p>Platform: {{ game?.platform }}</p>
+      <p>Publisher: {{ game?.publisher }}</p>
+      <p>Developer: {{ game?.developer }}</p>
+      <p>Release Date: {{ game?.release_date }}</p>
+      <a href="{{ game?.game_url }}" target="_blank">Game URL</a>
+      <a href="{{ game?.freetogame_profile_url }}" target="_blank"
+        >FreeToGame Profile URL</a
+      >
+    </div>
+  </div>
+  <div class="screenshots">
+    <h2>Screenshots</h2>
+    <div class="screenshot" *ngFor="let screenshot of game?.screenshots">
+      <img
+        src="{{ screenshot.image }}"
+        alt="Screenshot do jogo {{ game?.title }}"
+      />
+    </div>
+  </div>
+</div>

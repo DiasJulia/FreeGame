@@ -1,0 +1,39 @@
+.container {
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 0 20px;
+}
+
+.game-details {
+  display: flex;
+}
+
+.thumbnail img {
+  max-width: 200px;
+  height: auto;
+}
+
+.info {
+  margin-left: 20px;
+}
+
+.info h2 {
+  margin-top: 0;
+}
+
+.description-long {
+  white-space: pre-line;
+}
+
+.screenshots {
+  margin-top: 20px;
+}
+
+.screenshot {
+  margin-bottom: 10px;
+}
+
+.screenshot img {
+  max-width: 100%;
+  height: auto;
+}

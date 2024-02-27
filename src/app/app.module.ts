@@ -9,9 +9,10 @@ import { GameCardComponent } from './components/game-card/game-card.component';
 import { FormsModule } from '@angular/forms';
 import { FilterGamePipe } from './pipes/filter-game.pipe';
 import { SortGamePipe } from './pipes/sort-game.pipe';
+import { GameDetailComponent } from './pages/game-detail/game-detail.component';
 
 @NgModule({
-  declarations: [AppComponent, GameListComponent, GameCardComponent, FilterGamePipe, SortGamePipe],
+  declarations: [AppComponent, GameListComponent, GameCardComponent, FilterGamePipe, SortGamePipe, GameDetailComponent],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
