@@ -22,8 +22,20 @@ export class GameListComponent implements OnInit {
   public filterPlatform = '';
   public filterYear = '';
 
-  public sortCriterion = '';
-  public sortDirection = 'asc';
+  public sortCriterion = 'default';
+
+  public sortGames() {
+    if (this.sortCriterion === 'default') {
+      this.gameService.getAllGames().subscribe((data: Game[]) => {
+        this.games = data;
+      });
+    }
+    this.gameService
+      .getGamesSortedBy(this.sortCriterion)
+      .subscribe((data: Game[]) => {
+        this.games = data;
+      });
+  }
 
   ngOnInit() {
     this.gameService.getAllGames().subscribe((data: Game[]) => {

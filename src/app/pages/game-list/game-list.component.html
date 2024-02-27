@@ -38,23 +38,19 @@
   <div>
     <label for="filter">Ordenar por</label>
     <br />
-    <select [(ngModel)]="sortCriterion">
-      <option value="">Relevância</option>
-      <option value="title">Nome</option>
-      <option value="release_date">Ano de Lançamento</option>
-    </select>
-    <select [(ngModel)]="sortDirection">
-      <option value="asc">Crescente</option>
-      <option value="desc">Decrescente</option>
+    <select [(ngModel)]="sortCriterion" (change)="sortGames()">
+      <option value="default">Padrão</option>
+      <option value="release-date">Data de Lançamento</option>
+      <option value="popularity">Popularidade</option>
+      <option value="alphabetical">Ordem Alfabética</option>
+      <option value="relevance">Relevância</option>
     </select>
   </div>
 </div>
 <ul class="game-list">
   <div
     *ngFor="
-      let game of games
-        | filterGame : filterGenre : filterPlatform : filterYear
-        | sortGame : sortCriterion : sortDirection
+      let game of games | filterGame : filterGenre : filterPlatform : filterYear
     "
   >
     <li>

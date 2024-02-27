@@ -18,4 +18,10 @@ export class GamesService {
   public getGameById(id: number) {
     return this.http.get<GameDetailed>(`${this.baseUrl}game?id=${id}`);
   }
+
+  public getGamesSortedBy(sortCriterion: string) {
+    return this.http.get<Game[]>(
+      `${this.baseUrl}games?sort-by=${sortCriterion}`
+    );
+  }
 }
