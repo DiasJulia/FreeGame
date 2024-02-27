@@ -22,7 +22,11 @@
   <button (click)="filterGames = ''">Limpar</button>
 </div>
 <ul class="game-list">
-  <div *ngFor="let game of games">
+  <div
+    *ngFor="
+      let game of games | filterGame : filterGenre : filterPlatform : filterYear
+    "
+  >
     <li>
       <app-game-card [game]="game"></app-game-card>
     </li>
