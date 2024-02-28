@@ -21,8 +21,6 @@ export class GameCardComponent implements OnInit {
     } else {
       this.favoriteGamesService.removeFavoriteGame(this.game.id);
     }
-
-    console.log(this.favoriteGamesService.getFavoriteGames());
   }
 
   ngOnInit() {

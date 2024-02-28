@@ -1,0 +1,8 @@
+<app-navbar></app-navbar>
+<ul class="game-list">
+  <div *ngFor="let game of games">
+    <li>
+      <app-game-card [game]="game"></app-game-card>
+    </li>
+  </div>
+</ul>

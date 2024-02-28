@@ -10,9 +10,11 @@ import { FormsModule } from '@angular/forms';
 import { FilterGamePipe } from './pipes/filter-game.pipe';
 import { SortGamePipe } from './pipes/sort-game.pipe';
 import { GameDetailComponent } from './pages/game-detail/game-detail.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { FavoriteListComponent } from './pages/favorite-list/favorite-list.component';
 
 @NgModule({
-  declarations: [AppComponent, GameListComponent, GameCardComponent, FilterGamePipe, SortGamePipe, GameDetailComponent],
+  declarations: [AppComponent, GameListComponent, GameCardComponent, FilterGamePipe, SortGamePipe, GameDetailComponent, NavbarComponent, FavoriteListComponent],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
