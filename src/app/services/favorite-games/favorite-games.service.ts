@@ -21,4 +21,9 @@ export class FavoriteGamesService {
     favoriteGames = favoriteGames.filter((game) => game.id !== gameId);
     sessionStorage.setItem('favoriteGames', JSON.stringify(favoriteGames));
   }
+
+  public isFavorite(gameId: number): boolean {
+    const favoriteGames = this.getFavoriteGames();
+    return favoriteGames.some((game) => game.id === gameId);
+  }
 }
