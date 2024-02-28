@@ -13,7 +13,13 @@ export class FavoriteGamesService {
   public addFavoriteGame(game: Game) {
     const favoriteGames = this.getFavoriteGames();
     favoriteGames.push(game);
-    sessionStorage.setItem('favoriteGames', JSON.stringify(favoriteGames));
+    const uniqueFavoriteGames = favoriteGames.filter(
+      (game, index, self) => index === self.findIndex((t) => t.id === game.id)
+    );
+    sessionStorage.setItem(
+      'favoriteGames',
+      JSON.stringify(uniqueFavoriteGames)
+    );
   }
 
   public removeFavoriteGame(gameId: number) {
