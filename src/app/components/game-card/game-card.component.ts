@@ -9,5 +9,11 @@ import { Game } from '../../interfaces/game';
 export class GameCardComponent {
   @Input() game!: Game;
 
+  public isFavorite = false;
+
   constructor() {}
+
+  public toggleFavorite() {
+    this.isFavorite = !this.isFavorite;
+  }
 }

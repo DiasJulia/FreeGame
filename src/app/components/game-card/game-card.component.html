@@ -1,15 +1,21 @@
-<a href="/game/{{ game.id }}">
-  <div class="card">
-    <img
-      src="{{ game.thumbnail }}"
-      alt="capa de {{ game.title }}"
-      style="width: 100%"
-    />
-    <div class="container">
-      <h4>
-        <b>{{ game.title }}</b>
-      </h4>
-      <p>{{ game.short_description }}</p>
-    </div>
+<div class="card">
+  <button
+    class="favorite"
+    (click)="toggleFavorite()"
+    [ngClass]="{ active: isFavorite }"
+  >
+    <i class="fa fa-heart"></i>
+  </button>
+  <img
+    src="{{ game.thumbnail }}"
+    alt="capa de {{ game.title }}"
+    style="width: 100%"
+  />
+  <div class="container">
+    <h4>
+      <b>{{ game.title }}</b>
+    </h4>
+    <p>{{ game.short_description }}</p>
   </div>
-</a>
+  <a href="/game/{{ game.id }}"> Ver Detalhes </a>
+</div>
