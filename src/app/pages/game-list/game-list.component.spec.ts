@@ -4,6 +4,7 @@ import { GameListComponent } from './game-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FilterGamePipe } from '../../pipes/filter-game.pipe';
 import { FormsModule } from '@angular/forms';
+import { NavbarComponent } from '../../components/navbar/navbar.component';
 
 describe('GameListComponent', () => {
   let component: GameListComponent;
@@ -12,7 +13,7 @@ describe('GameListComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [HttpClientModule, FormsModule],
-      declarations: [GameListComponent, FilterGamePipe],
+      declarations: [GameListComponent, FilterGamePipe, NavbarComponent],
     }).compileComponents();
 
     fixture = TestBed.createComponent(GameListComponent);

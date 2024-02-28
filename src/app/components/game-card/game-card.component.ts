@@ -12,7 +12,7 @@ export class GameCardComponent implements OnInit {
 
   public isFavorite = false;
 
-  constructor(private favoriteGamesService: FavoriteGamesService) {}
+  constructor(public favoriteGamesService: FavoriteGamesService) {}
 
   public toggleFavorite() {
     this.isFavorite = !this.isFavorite;
