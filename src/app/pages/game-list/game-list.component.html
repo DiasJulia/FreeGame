@@ -17,6 +17,14 @@
         </select>
       </div>
       <div>
+        <label for="filter">Ano de Lançamento</label>
+        <br />
+        <select [(ngModel)]="filterYear">
+          <option value="">Todos</option>
+          <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+        </select>
+      </div>
+      <div>
         <label for="filter">Plataforma</label>
         <br />
         <select [(ngModel)]="filterPlatform">
@@ -24,14 +32,6 @@
           <option *ngFor="let platform of platforms" [value]="platform">
             {{ platform }}
           </option>
-        </select>
-      </div>
-      <div>
-        <label for="filter">Ano de Lançamento</label>
-        <br />
-        <select [(ngModel)]="filterYear">
-          <option value="">Todos</option>
-          <option *ngFor="let year of years" [value]="year">{{ year }}</option>
         </select>
       </div>
     </div>
