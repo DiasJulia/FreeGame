@@ -10,7 +10,6 @@ import { FormsModule } from '@angular/forms';
 import { FilterGamePipe } from './pipes/filter-game.pipe';
 import { GameDetailComponent } from './pages/game-detail/game-detail.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { FavoriteListComponent } from './pages/favorite-list/favorite-list.component';
 import { SearchGamePipe } from './pipes/search-game.pipe';
 
 @NgModule({
@@ -21,7 +20,6 @@ import { SearchGamePipe } from './pipes/search-game.pipe';
     FilterGamePipe,
     GameDetailComponent,
     NavbarComponent,
-    FavoriteListComponent,
     SearchGamePipe,
   ],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule, FormsModule],
