@@ -53,6 +53,7 @@
         *ngFor="
           let game of games
             | filterGame : filterGenre : filterPlatform : filterYear
+            | searchGame : filterGames
         "
       >
         <li>
