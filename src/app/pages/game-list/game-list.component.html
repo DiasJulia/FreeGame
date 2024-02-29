@@ -1,60 +1,64 @@
-<app-navbar></app-navbar>
-<div class="filter-box">
-  <div style="width: 100%">
-    <label for="filter">Pesquisar</label>
-    <br />
-    <input type="search" placeholder="Pesquisar" [(ngModel)]="filterGames" />
+<div class="row">
+  <div class="filter-box">
+    <div style="width: 100%">
+      <label for="filter">Pesquisar</label>
+      <br />
+      <input type="search" placeholder="Pesquisar" [(ngModel)]="filterGames" />
+    </div>
+    <div class="row">
+      <div>
+        <label for="filter">Categoria</label>
+        <br />
+        <select [(ngModel)]="filterGenre">
+          <option value="">Todos</option>
+          <option *ngFor="let genre of genres" [value]="genre">
+            {{ genre }}
+          </option>
+        </select>
+      </div>
+      <div>
+        <label for="filter">Plataforma</label>
+        <br />
+        <select [(ngModel)]="filterPlatform">
+          <option value="">Todos</option>
+          <option *ngFor="let platform of platforms" [value]="platform">
+            {{ platform }}
+          </option>
+        </select>
+      </div>
+      <div>
+        <label for="filter">Ano de Lançamento</label>
+        <br />
+        <select [(ngModel)]="filterYear">
+          <option value="">Todos</option>
+          <option *ngFor="let year of years" [value]="year">{{ year }}</option>
+        </select>
+      </div>
+    </div>
+    <div>
+      <label for="filter">Ordenar por</label>
+      <br />
+      <select [(ngModel)]="sortCriterion" (change)="sortGames()">
+        <option value="default">Padrão</option>
+        <option value="release-date">Data de Lançamento</option>
+        <option value="popularity">Popularidade</option>
+        <option value="alphabetical">Ordem Alfabética</option>
+        <option value="relevance">Relevância</option>
+      </select>
+    </div>
   </div>
-  <div class="row">
-    <div>
-      <label for="filter">Categoria</label>
-      <br />
-      <select [(ngModel)]="filterGenre">
-        <option value="">Todos</option>
-        <option *ngFor="let genre of genres" [value]="genre">
-          {{ genre }}
-        </option>
-      </select>
-    </div>
-    <div>
-      <label for="filter">Plataforma</label>
-      <br />
-      <select [(ngModel)]="filterPlatform">
-        <option value="">Todos</option>
-        <option *ngFor="let platform of platforms" [value]="platform">
-          {{ platform }}
-        </option>
-      </select>
-    </div>
-    <div>
-      <label for="filter">Ano de Lançamento</label>
-      <br />
-      <select [(ngModel)]="filterYear">
-        <option value="">Todos</option>
-        <option *ngFor="let year of years" [value]="year">{{ year }}</option>
-      </select>
-    </div>
-  </div>
-  <div>
-    <label for="filter">Ordenar por</label>
-    <br />
-    <select [(ngModel)]="sortCriterion" (change)="sortGames()">
-      <option value="default">Padrão</option>
-      <option value="release-date">Data de Lançamento</option>
-      <option value="popularity">Popularidade</option>
-      <option value="alphabetical">Ordem Alfabética</option>
-      <option value="relevance">Relevância</option>
-    </select>
+  <div class="game-list-container">
+    <ul class="game-list">
+      <div
+        *ngFor="
+          let game of games
+            | filterGame : filterGenre : filterPlatform : filterYear
+        "
+      >
+        <li>
+          <app-game-card [game]="game"></app-game-card>
+        </li>
+      </div>
+    </ul>
   </div>
 </div>
-<ul class="game-list">
-  <div
-    *ngFor="
-      let game of games | filterGame : filterGenre : filterPlatform : filterYear
-    "
-  >
-    <li>
-      <app-game-card [game]="game"></app-game-card>
-    </li>
-  </div>
-</ul>
