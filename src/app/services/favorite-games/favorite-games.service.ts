@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Game } from '../../interfaces/game';
+import { GameDetailed } from '../../interfaces/game-detailed';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +11,7 @@ export class FavoriteGamesService {
     return favoriteGamesJSON ? JSON.parse(favoriteGamesJSON) : [];
   }
 
-  public addFavoriteGame(game: Game) {
+  public addFavoriteGame(game: Game | GameDetailed) {
     const favoriteGames = this.getFavoriteGames();
     favoriteGames.push(game);
     const uniqueFavoriteGames = favoriteGames.filter(
