@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { GamesService } from '../../services/games/games.service';
 import { GameDetailed } from '../../interfaces/game-detailed';
+import { FavoriteGamesService } from '../../services/favorite-games/favorite-games.service';
 
 @Component({
   selector: 'app-game-detail',
@@ -11,10 +12,12 @@ import { GameDetailed } from '../../interfaces/game-detailed';
 export class GameDetailComponent {
   private id: string = '';
   public game: GameDetailed | undefined;
+  public isFavorite = false;
 
   constructor(
     private route: ActivatedRoute,
-    private gameService: GamesService
+    private gameService: GamesService,
+    public favoriteGamesService: FavoriteGamesService
   ) {
     this.id = this.route.snapshot.params['id'];
     this.gameService
@@ -22,5 +25,16 @@ export class GameDetailComponent {
       .subscribe((data: GameDetailed) => {
         this.game = data;
       });
+  }
+
+  public toggleFavorite() {
+    this.isFavorite = !this.isFavorite;
+    if (this.game) {
+      if (this.isFavorite) {
+        this.favoriteGamesService.addFavoriteGame(this.game);
+      } else {
+        this.favoriteGamesService.removeFavoriteGame(this.game.id);
+      }
+    }
   }
 }
