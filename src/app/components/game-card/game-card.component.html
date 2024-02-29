@@ -4,19 +4,21 @@
     (click)="toggleFavorite()"
     [ngClass]="{ active: isFavorite }"
   >
-    <i class="fa fa-heart"></i>
+    <i class="fa-heart" [ngClass]="{ fa: isFavorite, far: !isFavorite }"></i>
   </button>
-  <img
-    class="thumbnail"
-    src="{{ game.thumbnail }}"
-    alt="capa de {{ game.title }}"
-    style="width: 100%"
-  />
-  <div class="container">
+  <div class="card-image">
+    <img
+      class="thumbnail"
+      src="{{ game.thumbnail }}"
+      alt="capa de {{ game.title }}"
+      style="width: 100%"
+    />
+  </div>
+  <div class="card-content">
     <h4>
       <b class="card-title">{{ game.title }}</b>
     </h4>
-    <p>{{ game.short_description }}</p>
+    <p class="card-description">{{ game.short_description }}</p>
+    <a href="/game/{{ game.id }}"> Ver Detalhes </a>
   </div>
-  <a href="/game/{{ game.id }}"> Ver Detalhes </a>
 </div>
