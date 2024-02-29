@@ -26,7 +26,7 @@ export class GameListComponent implements OnInit {
   public games: Game[] = [];
   public genres = new Set<string>();
   public platforms = new Set<string>();
-  public years: number[] = [...Array(2022 - 1970).keys()]
+  public years: number[] = [...Array(2024 - 1970).keys()]
     .map((i) => i + 1970)
     .reverse();
 
