@@ -17,7 +17,7 @@ export class GameCardComponent implements OnInit {
   public toggleFavorite() {
     this.isFavorite = !this.isFavorite;
     if (this.isFavorite) {
-      this.favoriteGamesService.addFavoriteGame(this.game);
+      this.favoriteGamesService.addFavoriteGame(this.game.id);
     } else {
       this.favoriteGamesService.removeFavoriteGame(this.game.id);
     }

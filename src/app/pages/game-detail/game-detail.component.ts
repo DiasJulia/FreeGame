@@ -31,7 +31,7 @@ export class GameDetailComponent {
     this.isFavorite = !this.isFavorite;
     if (this.game) {
       if (this.isFavorite) {
-        this.favoriteGamesService.addFavoriteGame(this.game);
+        this.favoriteGamesService.addFavoriteGame(this.game.id);
       } else {
         this.favoriteGamesService.removeFavoriteGame(this.game.id);
       }

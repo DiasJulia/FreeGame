@@ -51,10 +51,11 @@
     <ul class="game-list">
       <div
         *ngFor="
-          let game of games
+          let game of getGames()
             | filterGame : filterGenre : filterPlatform : filterYear
             | searchGame : filterGames
         "
+        [ngClass]="{ favoriteGame: favoriteGames.includes(game.id) }"
       >
         <li>
           <app-game-card [game]="game"></app-game-card>
