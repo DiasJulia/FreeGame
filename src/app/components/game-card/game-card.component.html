@@ -1,7 +1,7 @@
-<div class="game-card">
+<div class="game-card" [routerLink]="['/game', game.id]">
   <button
     class="favorite"
-    (click)="toggleFavorite()"
+    (click)="toggleFavorite($event)"
     [ngClass]="{ active: isFavorite }"
   >
     <i class="fa-heart" [ngClass]="{ fa: isFavorite, far: !isFavorite }"></i>
