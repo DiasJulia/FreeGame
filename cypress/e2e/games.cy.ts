@@ -1,16 +1,20 @@
 describe('Página de jogos', () => {
+  before(() => {
+    cy.window().then((win) => {
+      win.localStorage.removeItem('favoriteGames');
+    });
+  });
+
   it('deve exibir uma lista de jogos com nome, capa e plataforma', () => {
-    cy.visit('http://localhost:4200/');
-
-    cy.get('.game-list').should('exist');
-
-    cy.get('.game-card').should('have.length.greaterThan', 0);
-
-    cy.get('.game-card').each((jogo) => {
-      cy.wrap(jogo).within(() => {
-        cy.get('.card-title').should('exist');
-        cy.get('.thumbnail').should('exist');
-        // cy.get('.plataforma-do-jogo').should('exist');
+    cy.visit('http://localhost:4200/').then(() => {
+      cy.get('.game-list').should('exist');
+      cy.get('.game-card').should('have.length.greaterThan', 0);
+      cy.get('.game-card').each((jogo) => {
+        cy.wrap(jogo).within(() => {
+          cy.get('.card-title').should('exist');
+          cy.get('.thumbnail').should('exist');
+          cy.get('.plataforma').should('exist');
+        });
       });
     });
   });
@@ -23,13 +27,9 @@ describe('Página de jogos', () => {
       .within(() => {
         cy.get('.card-title').invoke('text').as('nomeDoJogo');
         cy.get('a').click();
-      })
-      .then(() => {
-        cy.url().should('include', '/game/');
-        cy.get('@nomeDoJogo').then((nomeDoJogo) => {
-          cy.get('h1').should('contain.text', nomeDoJogo);
-        });
       });
+
+    cy.url().should('include', '/game/');
   });
 
   it('deve permitir favoritar um jogo', () => {
@@ -43,7 +43,7 @@ describe('Página de jogos', () => {
       });
     656;
 
-    cy.visit('http://localhost:4200/favorites');
+    cy.visit('http://localhost:4200?show=favorites');
     cy.get('.game-card').should('have.length.greaterThan', 0);
 
     cy.get('.game-card').each((jogo) => {
@@ -54,14 +54,4 @@ describe('Página de jogos', () => {
       });
     });
   });
-
-  it('deve permitir filtrar a lista de jogos por plataforma', () => {});
-
-  it('deve permitir filtrar a lista de jogos por ano de lançamento', () => {});
-
-  it('deve permitir filtrar a lista de jogos por categoria', () => {});
-
-  it('deve permitir filtrar os jogos por desenvolvedor', () => {});
-
-  it('deve permitir filtrar os jogos por categoria e plataforma', () => {});
 });

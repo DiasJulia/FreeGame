@@ -19,7 +19,7 @@
       <div>
         <label for="filter">Ano de Lançamento</label>
         <br />
-        <select [(ngModel)]="filterYear">
+        <select id="release-year-filter" [(ngModel)]="filterYear">
           <option value="">Todos</option>
           <option *ngFor="let year of years" [value]="year">{{ year }}</option>
         </select>
@@ -27,7 +27,7 @@
       <div>
         <label for="filter">Plataforma</label>
         <br />
-        <select [(ngModel)]="filterPlatform">
+        <select id="platform-filter" [(ngModel)]="filterPlatform">
           <option value="">Todos</option>
           <option *ngFor="let platform of platforms" [value]="platform">
             {{ platform }}
@@ -38,7 +38,11 @@
     <div>
       <label for="filter">Ordenar por</label>
       <br />
-      <select [(ngModel)]="sortCriterion" (change)="sortGames()">
+      <select
+        id="sort-criterion"
+        [(ngModel)]="sortCriterion"
+        (change)="sortGames()"
+      >
         <option value="default">Padrão</option>
         <option value="release-date">Data de Lançamento</option>
         <option value="popularity">Popularidade</option>
