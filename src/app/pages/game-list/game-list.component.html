@@ -6,7 +6,7 @@
       <input type="search" placeholder="Pesquisar" [(ngModel)]="filterGames" />
     </div>
     <div class="row">
-      <div>
+      <div style="width: 36%">
         <label for="filter">Categoria</label>
         <br />
         <select [(ngModel)]="filterGenre">
@@ -16,7 +16,7 @@
           </option>
         </select>
       </div>
-      <div>
+      <div style="width: 60%; margin-right: 0">
         <label for="filter">Ano de Lançamento</label>
         <br />
         <select id="release-year-filter" [(ngModel)]="filterYear">
@@ -24,19 +24,19 @@
           <option *ngFor="let year of years" [value]="year">{{ year }}</option>
         </select>
       </div>
-      <div>
-        <label for="filter">Plataforma</label>
-        <br />
-        <select id="platform-filter" [(ngModel)]="filterPlatform">
-          <option value="">Todos</option>
-          <option *ngFor="let platform of platforms" [value]="platform">
-            {{ platform }}
-          </option>
-        </select>
-      </div>
     </div>
-    <div>
-      <label for="filter">Ordenar por</label>
+    <div style="width: 100%">
+      <label for="filter">Plataforma</label>
+      <br />
+      <select id="platform-filter" [(ngModel)]="filterPlatform">
+        <option value="">Todos</option>
+        <option *ngFor="let platform of platforms" [value]="platform">
+          {{ platform }}
+        </option>
+      </select>
+    </div>
+    <div style="width: 100%">
+      <label for="sort-criterion">Ordenar por</label>
       <br />
       <select
         id="sort-criterion"

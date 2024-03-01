@@ -16,24 +16,30 @@
         </button>
       </a>
     </div>
+    <p>{{ game?.short_description || "Descrição Curta do Jogo" }}</p>
   </div>
   <div class="game-details">
     <div class="info">
       <h1>{{ game?.title || "Título do Jogo" }}</h1>
     </div>
     <hr />
+    <br />
     <p class="description-long">
       {{ game?.description || "Descrição longa do Jogo" }}
     </p>
     <br />
     <h2>Requisitos do Sistema</h2>
+    <hr />
     <div class="system-requirements">
       <div class="col">
         <div class="requirement">
           <h3>SO</h3>
           <p>{{ game?.minimum_system_requirements?.os }}</p>
         </div>
-
+        <div class="requirement">
+          <h3>Processador</h3>
+          <p>{{ game?.minimum_system_requirements?.processor }}</p>
+        </div>
         <div class="requirement">
           <h3>Memória</h3>
           <p>{{ game?.minimum_system_requirements?.memory }}</p>
