@@ -2,9 +2,18 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GameListComponent } from './game-list.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ActivatedRoute } from '@angular/router';
 import { FilterGamePipe } from '../../pipes/filter-game.pipe';
 import { FormsModule } from '@angular/forms';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
+
+class ActivatedRouteStub {
+  snapshot = {
+    params: {
+      id: 1,
+    },
+  };
+}
 
 describe('GameListComponent', () => {
   let component: GameListComponent;
@@ -14,6 +23,12 @@ describe('GameListComponent', () => {
     await TestBed.configureTestingModule({
       imports: [HttpClientModule, FormsModule],
       declarations: [GameListComponent, FilterGamePipe, NavbarComponent],
+      providers: [
+        {
+          provide: ActivatedRoute,
+          useClass: ActivatedRouteStub,
+        },
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(GameListComponent);

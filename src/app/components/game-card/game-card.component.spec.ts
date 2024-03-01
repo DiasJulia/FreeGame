@@ -1,8 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { GameCardComponent } from './game-card.component';
+import { ActivatedRoute } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
 import { FavoriteGamesService } from '../../services/favorite-games/favorite-games.service';
+import { RouterLink } from '@angular/router';
+
+class ActivatedRouteStub {
+  snapshot = {
+    params: {
+      id: 1,
+    },
+  };
+}
 
 describe('GameCardComponent', () => {
   let component: GameCardComponent;
@@ -11,9 +21,12 @@ describe('GameCardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HttpClientModule],
+      imports: [HttpClientModule, RouterLink],
       declarations: [GameCardComponent],
-      providers: [FavoriteGamesService],
+      providers: [
+        FavoriteGamesService,
+        { provide: ActivatedRoute, useClass: ActivatedRouteStub },
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(GameCardComponent);
@@ -63,13 +76,13 @@ describe('GameCardComponent', () => {
 
     expect(component.isFavorite).toBeTrue();
     expect(favoriteGamesService.addFavoriteGame).toHaveBeenCalledWith(
-      component.game
+      component.game.id
     );
   });
 
   it('should unfavorite game', () => {
     component.isFavorite = true;
-    favoriteGamesService.addFavoriteGame(component.game);
+    favoriteGamesService.addFavoriteGame(component.game.id);
     spyOn(favoriteGamesService, 'removeFavoriteGame');
 
     fixture.detectChanges();
