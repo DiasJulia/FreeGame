@@ -1,5 +1,12 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 56px;
+  flex-wrap: wrap;
+}
+
 .game-list-container{
-  width: -webkit-fill-available;
+  width: calc(100% - 380px);
 }
 
 .game-list{
@@ -27,7 +34,7 @@
   margin: 0 20px;
   height: min-content;
   z-index: 1;
-  width: 375px;
+  width: 300px;
   display: flex;
   flex-wrap: wrap;
   justify-content: stretch;
@@ -66,4 +73,28 @@
 
 .favoriteGame{
   order: -1;
+}
+
+@media (max-width: 768px) {
+  .filter-box{
+    top: 8px;
+    position: relative;
+    width: 100%;
+  }
+
+  .game-list-container{
+    width: 100%;
+    padding: 20px;
+  }
+
+  .game-list{
+    justify-content: space-between;
+  }
+
+}
+
+@media (max-width: 656px) {
+  .game-list{
+    justify-content: center;
+  }
 }
