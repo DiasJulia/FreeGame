@@ -1,7 +1,7 @@
 <div class="container">
   <div class="game-thumbnail">
     <div class="thumbnail">
-      <img src="https://www.freetogame.com/g/2/thumbnail.jpg" alt="Thumbnail" />
+      <img src="{{ game?.thumbnail }}" alt="Thumbnail" />
     </div>
     <div class="game-links">
       <button class="favorite" (click)="toggleFavorite()">
@@ -11,57 +11,83 @@
         ></i>
       </button>
       <a href="{{ game?.game_url }}" target="_blank"
-        ><button class="favorite">
-          <i class="fa fa-gamepad"></i>
+        ><button class="play">
+          <b>JOGAR </b><i class="fa fa-external-link"></i>
         </button>
       </a>
-      <a href="{{ game?.freetogame_profile_url }}" target="_blank"
-        ><button class="favorite">
-          <i class="fa fa-external-link"></i></button
-      ></a>
     </div>
   </div>
   <div class="game-details">
     <div class="info">
       <h1>{{ game?.title || "Título do Jogo" }}</h1>
-      <p>Status: {{ game?.status || "Status do Jogo" }}</p>
-      <p>Categoria: {{ game?.genre }}</p>
-      <p>Platforma: {{ game?.platform }}</p>
-      <p>Distribuidora: {{ game?.publisher }}</p>
-      <p>Desenvolvedora: {{ game?.developer }}</p>
-      <p>Data de Lançamento: {{ game?.release_date }}</p>
     </div>
     <hr />
-    <h2>Sobre o Jogo</h2>
     <p class="description-long">
       {{ game?.description || "Descrição longa do Jogo" }}
     </p>
-    <hr />
+    <br />
     <h2>Requisitos do Sistema</h2>
     <div class="system-requirements">
-      <div class="requirement">
-        <h3>SO</h3>
-        <p>{{ game?.minimum_system_requirements?.os }}</p>
+      <div class="col">
+        <div class="requirement">
+          <h3>SO</h3>
+          <p>{{ game?.minimum_system_requirements?.os }}</p>
+        </div>
+
+        <div class="requirement">
+          <h3>Memória</h3>
+          <p>{{ game?.minimum_system_requirements?.memory }}</p>
+        </div>
       </div>
-      <div class="requirement">
-        <h3>Processador</h3>
-        <p>{{ game?.minimum_system_requirements?.processor }}</p>
-      </div>
-      <div class="requirement">
-        <h3>Memória</h3>
-        <p>{{ game?.minimum_system_requirements?.memory }}</p>
-      </div>
-      <div class="requirement">
-        <h3>Placa de Vídeo</h3>
-        <p>{{ game?.minimum_system_requirements?.graphics }}</p>
-      </div>
-      <div class="requirement">
-        <h3>Armazenamento</h3>
-        <p>{{ game?.minimum_system_requirements?.storage }}</p>
+      <div class="col">
+        <div class="requirement">
+          <h3>Placa de Vídeo</h3>
+          <p>{{ game?.minimum_system_requirements?.graphics }}</p>
+        </div>
+        <div class="requirement">
+          <h3>Armazenamento</h3>
+          <p>{{ game?.minimum_system_requirements?.storage }}</p>
+        </div>
       </div>
     </div>
+    <br />
+    <h2>Informações Adicionais</h2>
     <hr />
+    <div class="aditional-information">
+      <div class="col">
+        <div class="info">
+          <h3>Plataforma</h3>
+          <p>{{ game?.platform || "Plataforma do Jogo" }}</p>
+        </div>
+        <div class="info">
+          <h3>Status</h3>
+          <p>{{ game?.status || "Status do Jogo" }}</p>
+        </div>
+      </div>
+      <div class="col">
+        <div class="info">
+          <h3>Categoria</h3>
+          <p>{{ game?.genre }}</p>
+        </div>
+        <div class="info">
+          <h3>Distribuidora</h3>
+          <p>{{ game?.publisher }}</p>
+        </div>
+      </div>
+      <div class="col">
+        <div class="info">
+          <h3>Desenvolvedora</h3>
+          <p>{{ game?.developer }}</p>
+        </div>
+        <div class="info">
+          <h3>Data de Lançamento</h3>
+          <p>{{ game?.release_date }}</p>
+        </div>
+      </div>
+    </div>
+    <br />
     <h2>Screenshots</h2>
+    <hr />
     <div class="screenshots">
       <div class="screenshot" *ngFor="let screenshot of game?.screenshots">
         <img
