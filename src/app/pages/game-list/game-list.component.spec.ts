@@ -6,11 +6,12 @@ import { ActivatedRoute } from '@angular/router';
 import { FilterGamePipe } from '../../pipes/filter-game.pipe';
 import { FormsModule } from '@angular/forms';
 import { NavbarComponent } from '../../components/navbar/navbar.component';
+import { SearchGamePipe } from '../../pipes/search-game.pipe';
 
 class ActivatedRouteStub {
-  snapshot = {
-    params: {
-      id: 1,
+  queryParams = {
+    subscribe: () => {
+      return { show: '' };
     },
   };
 }
@@ -22,7 +23,12 @@ describe('GameListComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [HttpClientModule, FormsModule],
-      declarations: [GameListComponent, FilterGamePipe, NavbarComponent],
+      declarations: [
+        GameListComponent,
+        FilterGamePipe,
+        NavbarComponent,
+        SearchGamePipe,
+      ],
       providers: [
         {
           provide: ActivatedRoute,
